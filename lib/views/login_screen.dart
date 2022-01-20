@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 70.0),
               TextField(
                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -122,7 +123,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: double.infinity,
                 height: 51.0,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                   authController.login(_emailController.text.trim(),
+                       _passwordController.text.trim());
+                  },
                   child: Text(
                     'Log in',
                     style: TextStyle(fontSize: 20.0),

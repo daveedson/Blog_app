@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -77,6 +79,8 @@ class AuthViewModel extends GetxController {
   void login(String email, password) async {
    try {
     await auth.signInWithEmailAndPassword(email: email, password: password);
-   } catch (firebaseAuthException) {}
+   } catch (firebaseAuthException) {
+    print(firebaseAuthException);
+   }
   }
 }
