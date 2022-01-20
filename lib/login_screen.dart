@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50.0,
                   width: 50.0,
                   child: Image.asset(
-                   'images/applelogo.png',
+                   'images/app.png',
                    scale: 12.0,
                   ),
                   decoration: BoxDecoration(
