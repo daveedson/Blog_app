@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twinku_blog/constants/constant.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -11,7 +11,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    bool isChecked = false;
+   final TextEditingController _emailController = TextEditingController();
+
+   final TextEditingController _passwordController = TextEditingController();
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 150.0),
@@ -25,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 70.0),
               TextField(
+               controller: _emailController,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -58,6 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 15.0),
               TextField(
+               controller: _passwordController,
+               obscureText: true,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -155,22 +160,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(10.0)),
                  ),
                   SizedBox(width: 13.0),
-                  Container(
-                   height: 50.0,
-                   width: 50.0,
-                   child: Image.asset(
-                    'images/google.png',
-                    scale: 12.0,
-                   ),
-                   decoration: BoxDecoration(
-                       border: Border.all(color: Color(0xFFF2F2F2)),
-                       color: Colors.white,
-                       borderRadius: BorderRadius.circular(10.0)),
+                  GestureDetector(
+                   onTap: (){
+                    authController.signInWithGoogle();
+                   },
+                    child: Container(
+                     height: 50.0,
+                     width: 50.0,
+                     child: Image.asset(
+                      'images/google.png',
+                      scale: 12.0,
+                     ),
+                     decoration: BoxDecoration(
+                         border: Border.all(color: Color(0xFFF2F2F2)),
+                         color: Colors.white,
+                         borderRadius: BorderRadius.circular(10.0)),
+                    ),
                   ),
                 ],
               ),
-
-
             ],
           ),
         ),

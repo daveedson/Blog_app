@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:twinku_blog/login_screen.dart';
+import 'package:twinku_blog/view_model/authentication_view_model.dart';
+import 'package:twinku_blog/views/login_screen.dart';
 
-void main() {
+import 'constants/constant.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+ await firebaseInitialization.then((value) {
+ Get.put(AuthViewModel());
+ });
   runApp(const MyApp());
 }
 
@@ -27,7 +36,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      // ignore: prefer_const_constructors
+      home: Center(child:  CircularProgressIndicator()),
     );
   }
 }
