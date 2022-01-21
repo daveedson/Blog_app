@@ -2,19 +2,22 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
 import 'package:twinku_blog/models/data.dart';
 import 'package:twinku_blog/views/breaking_news_scroll.dart';
+import 'package:twinku_blog/views/other_news.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   PageController? _pageController;
   late TabController _tabController;
-  final tabList = ['All', 'information','Sports','Business','Culture'];
+  final tabList = ['All', 'information', 'Sports', 'Business', 'Culture'];
 
   @override
   void initState() {
@@ -134,24 +137,31 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     pageController: _pageController,
                     news: hotNews,
                   ),
-                  SizedBox(height: 20.0),
-                 TabBar(
-                  unselectedLabelColor: Colors.grey,
-                  labelPadding: EdgeInsets.only(top: 5.0,left: 10.0,right: 10.0),
-                  isScrollable: true,
-                  controller: _tabController,
-                  labelColor: Colors.blue,
-                  indicator: PointTabIndicator(
-                   position: PointTabIndicatorPosition.top,
-                   color: Colors.blue,
-                   //insets: EdgeInsets.only(bottom: 6),
+                  SizedBox(height: 10.0),
+                  TabBar(
+                    unselectedLabelColor: Colors.grey,
+                    labelPadding:
+                        EdgeInsets.only(top: 5.0, left: 10.0, right: 10.0),
+                    isScrollable: true,
+                    controller: _tabController,
+                    labelColor: Colors.blue,
+                    indicator: PointTabIndicator(
+                      position: PointTabIndicatorPosition.top,
+                      color: Colors.blue,
+                      //insets: EdgeInsets.only(bottom: 6),
+                    ),
+                    tabs: tabList.map((item) {
+                      return Tab(
+                        text: item,
+                      );
+                    }).toList(),
                   ),
-                  tabs: tabList.map((item) {
-                   return Tab(
-                    text: item,
-                   );
-                  }).toList(),
-                 ),
+
+                 OtherNews(),
+                 SizedBox(height: 10.0,),
+                 OtherNews(),
+                 SizedBox(height: 10.0,),
+                 OtherNews(),
                 ],
               ),
             ],
