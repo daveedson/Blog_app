@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twinku_blog/views/breaking_news_scroll.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,17 +10,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+ PageController ?_pageController;
+ @override
+  void initState() {
+   _pageController = PageController(initialPage: 2,viewportFraction: 0.8);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(
           left: 20.0,
-          right: 20.0,
+          // right: 20.0,
           top: 90.0,
         ),
         child: Column(
-         crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -31,13 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontWeight: FontWeight.w600),
                 ),
                 Spacer(),
-                ClipOval(
-                  child: SizedBox.fromSize(
-                    size: Size.fromRadius(20), // Image radius
-                    child: Image.asset(
-                      'images/ff.jpeg',
-                      scale: 35,
-                      fit: BoxFit.cover,
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: ClipOval(
+                    child: SizedBox.fromSize(
+                      size: Size.fromRadius(20), // Image radius
+                      child: Image.asset(
+                        'images/ff.jpeg',
+                        scale: 35,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -84,18 +95,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Spacer(),
-                Container(
-                  height: 50.0,
-                  width: 45.0,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(15.0)),
-                 child: Icon(Icons.settings_input_composite_outlined,color: Colors.white,),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: Container(
+                    height: 50.0,
+                    width: 45.0,
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(15.0)),
+                    child: Icon(
+                      Icons.settings_input_composite_outlined,
+                      color: Colors.white,
+                    ),
+                  ),
                 )
               ],
             ),
-           SizedBox(height: 30.0),
-           Text('Breaking news',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20,color: Color(0xFF0A1330)),)
+            SizedBox(height: 30.0),
+            Text(
+              'Breaking news',
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20,
+                  color: Color(0xFF0A1330)),
+            ),
+            SizedBox(height: 18.0),
+           BreakingNewsScroll(
+            image:'images/ppw.jpeg' ,
+            header: 'Twinku raises N4.2m seed for Africa-wide expansion',
+            date:'13 june 2021' ,
+            name:'Toke John' ,
+           ),
+
           ],
         ),
       ),
