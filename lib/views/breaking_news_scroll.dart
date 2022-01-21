@@ -22,7 +22,7 @@ class BreakingNewsScroll extends StatelessWidget {
      double value = 1;
      if(pageController!.position.haveDimensions){
       value = pageController!.page !- index;
-      value = (1-(value.abs()*0.25)).clamp(0.0, 1.0);
+      value = (1-(value.abs()*0.28)).clamp(0.0, 1.0);
      }
      return Center(
       child: SizedBox(height: Curves.easeInOut.transform(value)*295.0,

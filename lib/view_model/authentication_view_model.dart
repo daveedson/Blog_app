@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:twinku_blog/constants/constant.dart';
+import 'package:twinku_blog/views/bottom_NavBar.dart';
 import 'package:twinku_blog/views/home_screen.dart';
 import 'package:twinku_blog/views/login_screen.dart';
 
@@ -33,7 +34,7 @@ class AuthViewModel extends GetxController {
       Get.offAll(() => LoginScreen());
     } else {
       // if the user exists and logged in the the user is navigated to the Home Screen
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => BottomNavBar());
     }
   }
 
@@ -44,7 +45,7 @@ class AuthViewModel extends GetxController {
       Get.offAll(() => LoginScreen());
     } else {
       // if the user exists and logged in the the user is navigated to the Home Screen
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => BottomNavBar());
     }
   }
 

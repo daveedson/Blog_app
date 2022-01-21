@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:twinku_blog/view_model/authentication_view_model.dart';
+import 'package:twinku_blog/views/bottom_NavBar.dart';
 import 'package:twinku_blog/views/login_screen.dart';
 
 import 'constants/constant.dart';
@@ -38,6 +39,8 @@ class MyApp extends StatelessWidget {
       ),
       // ignore: prefer_const_constructors
       home: Center(child:  CircularProgressIndicator()),
+      //BottomNavBar()
+
     );
   }
 }
