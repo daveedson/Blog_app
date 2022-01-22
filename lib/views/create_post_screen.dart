@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 class CreatePostScreen extends StatelessWidget {
   @override
@@ -16,12 +17,15 @@ class CreatePostScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Cancel',
-                  style: TextStyle(
-                      color: Color(0xFF2281E3),
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w600),
+                GestureDetector(
+                 onTap: ()=>Get.back(),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(
+                        color: Color(0xFF2281E3),
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
                 Text(
                   'Create post',

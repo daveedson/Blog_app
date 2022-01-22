@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
+import 'package:get/get.dart';
 import 'package:twinku_blog/models/data.dart';
 import 'package:twinku_blog/views/breaking_news_scroll.dart';
+import 'package:twinku_blog/views/details_screen.dart';
 import 'package:twinku_blog/views/other_news.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -133,9 +135,14 @@ class _HomeScreenState extends State<HomeScreen>
                         color: Color(0xFF0A1330)),
                   ),
                   SizedBox(height: 18.0),
-                  BreakingNewsScroll(
-                    pageController: _pageController,
-                    news: hotNews,
+                  GestureDetector(
+                   onTap: (){
+                    Get.to(()=>DetailsScreen());
+                   },
+                    child: BreakingNewsScroll(
+                      pageController: _pageController,
+                      news: hotNews,
+                    ),
                   ),
                   SizedBox(height: 10.0),
                   TabBar(

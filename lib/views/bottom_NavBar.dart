@@ -2,6 +2,7 @@
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:twinku_blog/views/create_post_screen.dart';
 import 'package:twinku_blog/views/home_screen.dart';
 
@@ -20,8 +21,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   ];
 
   List<Widget> _widgetOptions = <Widget>[
-    //HomeScreen(),
-   CreatePostScreen(),
+    HomeScreen(),
+    //CreatePostScreen(),
     Scaffold(),
     Scaffold(),
     Scaffold(),
@@ -36,7 +37,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
         backgroundColor: Color(0xff2281E3),
         child: Icon(Icons.add),
 
-        onPressed: () {},
+        onPressed: () {
+          Get.to(
+            CreatePostScreen(),
+            fullscreenDialog: true,
+          );
+        },
         //params
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -51,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         onTap: (index) => setState(() => _bottomNavIndex = index),
         //other params
       ),
-     body: _widgetOptions.elementAt(_bottomNavIndex),
+      body: _widgetOptions.elementAt(_bottomNavIndex),
     );
   }
 }
