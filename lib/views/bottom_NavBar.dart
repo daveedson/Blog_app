@@ -2,6 +2,7 @@
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:twinku_blog/views/create_post_screen.dart';
 import 'package:twinku_blog/views/home_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -19,7 +20,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   ];
 
   List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+    //HomeScreen(),
+   CreatePostScreen(),
     Scaffold(),
     Scaffold(),
     Scaffold(),

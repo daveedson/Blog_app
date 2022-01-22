@@ -37,6 +37,7 @@ dependencies:
   flutter_firebase_firestore:
   animated_bottom_navigation_bar: ^0.3.2
   flutter_point_tab_bar: ^0.2.0
+  cloud_firestore:
 
 
   # The following adds the Cupertino Icons font to your application.
