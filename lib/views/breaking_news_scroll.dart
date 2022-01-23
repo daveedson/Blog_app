@@ -4,24 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:twinku_blog/models/breaking_news_model.dart';
 import 'package:twinku_blog/models/data.dart';
 
-class BreakingNewsScroll extends StatelessWidget {
+class BreakingNewsScroll extends StatefulWidget {
 
  final PageController? pageController;
  final List<BreakingNewsModel> ?news;
+
+
 
  const BreakingNewsScroll({Key? key,
 
   this.pageController, this.news})
      : super(key: key);
 
+  @override
+  State<BreakingNewsScroll> createState() => _BreakingNewsScrollState();
+}
+
+class _BreakingNewsScrollState extends State<BreakingNewsScroll> {
  _buildBreakingNews(BuildContext context, int index) {
   BreakingNewsModel newsModel = hotNews[index];
   return AnimatedBuilder(
-    animation: pageController!,
+    animation: widget.pageController!,
     builder: (BuildContext context, Widget? child) {
      double value = 1;
-     if(pageController!.position.haveDimensions){
-      value = pageController!.page !- index;
+     if(widget.pageController!.position.haveDimensions){
+      value = widget.pageController!.page !- index;
       value = (1-(value.abs()*0.28)).clamp(0.0, 1.0);
      }
      return Center(
@@ -116,8 +123,8 @@ class BreakingNewsScroll extends StatelessWidget {
   return SizedBox(
    height: 295.0,
    child: PageView.builder(
-    controller: pageController,
-    itemCount: news?.length,
+    controller: widget.pageController,
+    itemCount: widget.news?.length,
     itemBuilder: (BuildContext context, int index) =>
         _buildBreakingNews(context, index),
    ),

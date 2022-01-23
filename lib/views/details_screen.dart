@@ -1,13 +1,64 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, must_be_immutable, prefer_const_constructors_in_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:twinku_blog/models/breaking_news_model.dart';
+import 'package:twinku_blog/models/data.dart';
 
-class DetailsScreen extends StatelessWidget {
+class DetailsScreen extends StatefulWidget {
+ BreakingNewsModel? newsModel;
+ NewsDetailModel newsDetailModel = NewsDetailModel();
+  @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
+
+class _DetailsScreenState extends State<DetailsScreen> {
+ final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+     key: _key,
+     endDrawer: Padding(
+
+       padding: const EdgeInsets.only(right: 25.0,bottom: 600.0),
+       child: Container(
+        height: 150.0,
+        width: 243.0,
+        decoration: BoxDecoration(
+          color: Colors.white,
+         borderRadius: BorderRadius.circular(15.0)
+        ),
+        child: Padding(
+         padding: EdgeInsets.only(left: 16.5,top: 20.0,right: 3.0),
+         child: Column(
+          children: [
+           Row(
+            children: [
+             IconButton(onPressed: (){}, icon: Icon(Icons.edit_road_sharp,size: 30.0)),
+             Text('Edit post',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21.0),),
+             Spacer(),
+             IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_sharp,size: 20.0)),
+            ],
+           ),
+           //SizedBox(height: 5.0),
+           Divider(
+            thickness: 1.0,
+           ),
+           Row(
+            children: [
+             IconButton(onPressed: (){}, icon: Icon(Icons.delete,size: 30.0),color: Colors.red,),
+             Text('Delete post',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21.0,color: Colors.red),),
+             Spacer(),
+             IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_sharp,size: 20.0)),
+            ],
+           ),
+          ],
+         ),
+        ),
+       ),
+     ),
       body: Padding(
         padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 64.0),
         child: SingleChildScrollView(
@@ -51,25 +102,30 @@ class DetailsScreen extends StatelessWidget {
                         fontSize: 18.0,
                         fontWeight: FontWeight.w600),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 40.0,
-                    width: 40.0,
-                    child: Icon(
-                      Icons.menu,
-                      size: 16.0,
-                    ),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.8),
-                          // spreadRadius: 10,
-                          blurRadius: 3,
-                          offset: Offset(0, 6), // changes position of shadow
-                        ),
-                      ],
-                      color: Colors.white,
-                      shape: BoxShape.circle,
+                  GestureDetector(
+                   onTap: (){
+                    _key.currentState!.openEndDrawer();
+                   },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 40.0,
+                      width: 40.0,
+                      child: Icon(
+                        Icons.menu,
+                        size: 16.0,
+                      ),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.8),
+                            // spreadRadius: 10,
+                            blurRadius: 3,
+                            offset: Offset(0, 6), // changes position of shadow
+                          ),
+                        ],
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
                     ),
                   ),
                 ],
@@ -81,7 +137,9 @@ class DetailsScreen extends StatelessWidget {
                   constraints: BoxConstraints.expand(height: 250.0),
                   child: Stack(
                     children: [
-                      Container(child: Image.asset('images/ppw.jpeg')),
+                      Container(child: Hero(
+                          tag: 'tag1',
+                          child: Image.asset('images/ppw1.jpeg'))),
                       Positioned(
                         bottom: -16,
                         right: 25,

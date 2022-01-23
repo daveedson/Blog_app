@@ -1,24 +1,30 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
 import 'package:get/get.dart';
+import 'package:twinku_blog/models/breaking_news_model.dart';
 import 'package:twinku_blog/models/data.dart';
 import 'package:twinku_blog/views/breaking_news_scroll.dart';
 import 'package:twinku_blog/views/details_screen.dart';
 import 'package:twinku_blog/views/other_news.dart';
 
 class HomeScreen extends StatefulWidget {
-  @override
+
+
+ @override
   _HomeScreenState createState() => _HomeScreenState();
+
 }
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   PageController? _pageController;
   late TabController _tabController;
+  late BreakingNewsModel image;
+
   final tabList = ['All', 'information', 'Sports', 'Business', 'Culture'];
 
   @override
@@ -136,9 +142,9 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   SizedBox(height: 18.0),
                   GestureDetector(
-                   onTap: (){
-                    Get.to(()=>DetailsScreen());
-                   },
+                    onTap: () {
+                      Get.to(() => DetailsScreen());
+                    },
                     child: BreakingNewsScroll(
                       pageController: _pageController,
                       news: hotNews,
@@ -163,12 +169,15 @@ class _HomeScreenState extends State<HomeScreen>
                       );
                     }).toList(),
                   ),
-
-                 OtherNews(),
-                 SizedBox(height: 10.0,),
-                 OtherNews(),
-                 SizedBox(height: 10.0,),
-                 OtherNews(),
+                  OtherNews(),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  OtherNews(),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  OtherNews(),
                 ],
               ),
             ],
