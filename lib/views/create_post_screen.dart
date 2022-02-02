@@ -10,10 +10,9 @@ import 'package:twinku_blog/view_model/createPost_view_model.dart';
 class CreatePostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return GetBuilder<CreatePostViewModel>(
       init: CreatePostViewModel(),
-      builder:(value)=> Scaffold(
+      builder: (data) => Scaffold(
         body: Padding(
           padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 70.0),
           child: Column(
@@ -23,7 +22,7 @@ class CreatePostScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                   onTap: ()=>Get.back(),
+                    onTap: () => Get.back(),
                     child: Text(
                       'Cancel',
                       style: TextStyle(
@@ -40,9 +39,10 @@ class CreatePostScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   GestureDetector(
-                   onTap: (){
-                     value.createNewPost();
-                   },
+                    onTap: () async {
+                     await data.createNewPost();
+                     Get.back();
+                    },
                     child: Text(
                       'Save',
                       style: TextStyle(
@@ -71,12 +71,20 @@ class CreatePostScreen extends StatelessWidget {
                 height: 18.0,
               ),
               TextField(
-                decoration: InputDecoration.collapsed(hintText: 'Title:'),
+                decoration: InputDecoration.collapsed(
+                  hintText: 'Title:',
+                ),
+               onChanged: (value){
+                 data.title = value;
+               },
               ),
               SizedBox(height: 16.0),
               Divider(),
               SizedBox(height: 16.0),
               TextField(
+               onChanged: (value){
+                data.body = value;
+               },
                 keyboardType: TextInputType.multiline,
                 minLines: 1, //Normal textInputField will be displayed
                 maxLines: 5,
