@@ -1,16 +1,12 @@
 // ignore_for_file: avoid_print, constant_identifier_names
 
-import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:twinku_blog/constants/constant.dart';
 import 'package:twinku_blog/views/bottom_NavBar.dart';
-import 'package:twinku_blog/views/home_screen.dart';
 import 'package:twinku_blog/views/login_screen.dart';
-import 'package:twinku_blog/views/progress_loader.dart';
 
 
 enum authProblems { UserNotFound, PasswordNotValid, NetworkError }
