@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:twinku_blog/constants/constant.dart';
-import 'package:twinku_blog/services/create_post_service.dart';
+import 'package:twinku_blog/services/post_service.dart';
 import 'package:twinku_blog/views/bottom_NavBar.dart';
 import 'package:twinku_blog/views/login_screen.dart';
 
@@ -16,7 +16,6 @@ enum authProblems { UserNotFound, PasswordNotValid, NetworkError }
 class AuthViewModel extends GetxController {
  static AuthViewModel instance = Get.find();
  late Rx<User?> firebaseUser;
-
  String? uid;
 
 
@@ -42,10 +41,10 @@ class AuthViewModel extends GetxController {
    // if the user is not found then the user is navigated to the login Screen
    Get.offAll(() => LoginScreen());
   } else {
-   // if the user exists and logged in the the user is navigated to the Home Screen
    uid = user.uid;
    print(user.uid);
 
+   // if the user exists and logged in the the user is navigated to the Home Screen
    Get.offAll(() => BottomNavBar());
   }
  }

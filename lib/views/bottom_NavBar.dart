@@ -39,7 +39,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
         onPressed: () {
           Get.to(
-            CreatePostScreen(),
+            () => CreatePostScreen(),
             fullscreenDialog: true,
           );
         },

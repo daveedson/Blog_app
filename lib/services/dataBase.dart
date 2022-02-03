@@ -3,5 +3,6 @@
 import 'package:twinku_blog/models/createPost_model.dart';
 
 abstract class DataBase{
- Future<void> createPost(CreatePost createPost);
+ Future<void> createPost(PostsModel createPost);
+Stream<List<PostsModel>> getPost();
 }

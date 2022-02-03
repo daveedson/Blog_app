@@ -6,16 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:twinku_blog/models/createPost_model.dart';
-import 'package:twinku_blog/services/create_post_service.dart';
+import 'package:twinku_blog/services/post_service.dart';
 
 class CreatePostViewModel extends GetxController {
   String? title;
   String? body;
 
+  RxList<PostsModel> postsModel = RxList<PostsModel>([]);
+
   Future<void> createNewPost() async {
     try {
-      await CreatePostService().createPost(
-        CreatePost(
+      await PostsService().createPost(
+        PostsModel(
           title: title,
           body: body,
         ),
@@ -30,5 +32,12 @@ class CreatePostViewModel extends GetxController {
         middleTextStyle: TextStyle(color: Colors.white),
       );
     }
+  }
+
+  @override
+  void onInit() {
+   //in place of using stream builder.
+    postsModel.bindStream(PostsService().getPost());
+    super.onInit();
   }
 }

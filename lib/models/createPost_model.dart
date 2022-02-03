@@ -2,11 +2,11 @@
 
 import 'package:flutter/foundation.dart';
 
-class CreatePost {
+class PostsModel {
   final title;
   final body;
 
-  CreatePost({
+  PostsModel({
     @required this.title,
     @required this.body,
   });

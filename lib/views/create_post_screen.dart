@@ -40,8 +40,8 @@ class CreatePostScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () async {
-                     await data.createNewPost();
-                     Get.back();
+                      await data.createNewPost();
+                      Get.back();
                     },
                     child: Text(
                       'Save',
@@ -74,22 +74,37 @@ class CreatePostScreen extends StatelessWidget {
                 decoration: InputDecoration.collapsed(
                   hintText: 'Title:',
                 ),
-               onChanged: (value){
-                 data.title = value;
-               },
+                onChanged: (value) {
+                  data.title = value;
+                },
               ),
               SizedBox(height: 16.0),
               Divider(),
               SizedBox(height: 16.0),
               TextField(
-               onChanged: (value){
-                data.body = value;
-               },
+                onChanged: (value) {
+                  data.body = value;
+                },
                 keyboardType: TextInputType.multiline,
-                minLines: 1, //Normal textInputField will be displayed
+                minLines: 1,
+                //Normal textInputField will be displayed
                 maxLines: 5,
                 decoration: InputDecoration.collapsed(hintText: 'Body'),
               ),
+              SizedBox(height: 30.0),
+              // Obx(
+              //   () => ListView.builder(
+              //       shrinkWrap: true,
+              //       itemCount: data.postsModel.length,
+              //       itemBuilder: (context, int index) => Column(
+              //         children: [
+              //           Text(
+              //                 data.postsModel[index].title!,
+              //               ),
+              //          Text(data.postsModel[index].body!)
+              //         ],
+              //       )),
+              // )
             ],
           ),
         ),

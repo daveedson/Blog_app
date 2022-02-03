@@ -7,16 +7,14 @@ import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
 import 'package:get/get.dart';
 import 'package:twinku_blog/models/breaking_news_model.dart';
 import 'package:twinku_blog/models/data.dart';
+import 'package:twinku_blog/services/post_service.dart';
 import 'package:twinku_blog/views/breaking_news_scroll.dart';
 import 'package:twinku_blog/views/details_screen.dart';
 import 'package:twinku_blog/views/other_news.dart';
 
 class HomeScreen extends StatefulWidget {
-
-
- @override
+  @override
   _HomeScreenState createState() => _HomeScreenState();
-
 }
 
 class _HomeScreenState extends State<HomeScreen>
@@ -169,15 +167,16 @@ class _HomeScreenState extends State<HomeScreen>
                       );
                     }).toList(),
                   ),
-                  OtherNews(),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  OtherNews(),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  OtherNews(),
+
+                     OtherNews(),
+                     SizedBox(
+                       height: 10.0,
+                     ),
+                     OtherNews(),
+                     SizedBox(
+                       height: 10.0,
+                     ),
+                     OtherNews(),
                 ],
               ),
             ],
