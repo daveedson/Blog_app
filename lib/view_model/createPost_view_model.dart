@@ -12,6 +12,15 @@ class CreatePostViewModel extends GetxController {
   String? title;
   String? body;
 
+
+  @override
+  void onInit() {
+   //in place of using stream builder.
+   //this line of code is used to listen to the stream in the Post service class
+   postsModel.bindStream(PostsService().getPost());
+   super.onInit();
+  }
+
   RxList<PostsModel> postsModel = RxList<PostsModel>([]);
 
   Future<void> createNewPost() async {
@@ -34,10 +43,5 @@ class CreatePostViewModel extends GetxController {
     }
   }
 
-  @override
-  void onInit() {
-   //in place of using stream builder.
-    postsModel.bindStream(PostsService().getPost());
-    super.onInit();
-  }
+
 }
