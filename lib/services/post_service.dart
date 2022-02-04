@@ -14,9 +14,13 @@ class PostsService implements DataBase {
 
   final helperMethods = FireStoreHelperMethods();
 
+  //for getting a generic id for the document iD
+  String currentDateAndTimeId()=> DateTime.now().toIso8601String();
+
+
   @override
   Future<void> createPost(PostsModel createPost) => helperMethods.setData(
-      path: ApiPath.createPost(authViewModel.uid, 'post_abc'),
+      path: ApiPath.createPost(authViewModel.uid, currentDateAndTimeId()),
       data: createPost.toMap());
 
   @override
