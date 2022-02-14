@@ -12,7 +12,7 @@ class FireStoreHelperMethods {
   }
 
 //helper method to read to firestore database
-  Stream<List<T>> getData<T>({
+  Stream<List<T>>  getData<T>({
     required String? path,
     required T builder(Map<String, dynamic> data),
   }) {

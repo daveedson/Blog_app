@@ -1,13 +1,20 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison
 
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:twinku_blog/view_model/createPost_view_model.dart';
 
-class CreatePostScreen extends StatelessWidget {
+class CreatePostScreen extends StatefulWidget {
+  @override
+  State<CreatePostScreen> createState() => _CreatePostScreenState();
+}
+
+class _CreatePostScreenState extends State<CreatePostScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CreatePostViewModel>(
@@ -60,10 +67,11 @@ class CreatePostScreen extends StatelessWidget {
                   height: 132.0,
                   width: double.infinity,
                   decoration: BoxDecoration(color: Color(0xFFEFEFEF)),
-                  child: Icon(
-                    Icons.camera_alt_outlined,
+                  child: IconButton(
+                    icon: Icon(Icons.camera_alt_outlined),
                     color: Color(0xFF1251C4),
-                    size: 30.0,
+                    iconSize: 30.0,
+                    onPressed: () =>  data.pickImage(),
                   ),
                 ),
               ),
@@ -101,7 +109,7 @@ class CreatePostScreen extends StatelessWidget {
               //           Text(
               //                 data.postsModel[index].title!,
               //               ),
-              //          Text(data.postsModel[index].body!)
+              //         Text(data.postsModel[index].body!)
               //         ],
               //       )),
               // )
